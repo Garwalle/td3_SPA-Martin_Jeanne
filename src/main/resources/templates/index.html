@@ -1,0 +1,29 @@
+{{> include/header}}
+
+<!-- 
+<input v-model="message">
+<p><strong><%message%></strong></p>
+
+<button v-on:click="loadOrga">Charger orga</button> 
+-->
+
+<button v-on:click="addDialog=!addDialog">Ajouter orga</button>
+<div v-if="addDialog">
+	<form>
+		<fieldset>
+			<legend>Ajouter orga</legend>
+			<input type ="text" v-model="newOrga.name">
+			<v-btn v-on:click="addOrga" color="primary">Ajouter</v-btn>
+		</fieldset>
+	</form>
+</div>
+
+<ul>
+	<li v-for="orga in orgas" :key="orga.id">
+		<%orga.name%>
+	</li>
+</ul>
+
+
+{{> include/footer}}
+{{{vue}}}
