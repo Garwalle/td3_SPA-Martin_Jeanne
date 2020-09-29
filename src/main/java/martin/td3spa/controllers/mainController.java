@@ -24,11 +24,15 @@ public class mainController {
 		vue.addDataRaw("orgas", "[]");
 		vue.addDataRaw("newOrga", "{}");
 		vue.addData("addDialog", false);
+		model.put("vue", vue);
 
 		vue.onBeforeMount("let self=this;" + Http.get(restOrgaURL, "self.orgas=response.data;"));
-		model.put("vue", vue);
 		
-		vue.addMethod("addOrga", "let self=this;" + Http.post(restOrgaURL, "self.newOrga", "self.orgas.push(response.data);self.addDialog=false;", "console.log(response)"));		
+		vue.addMethod("addOrga", "let self=this;" + Http.post(restOrgaURL, "self.newOrga", "self.orgas.push(response.data);self.addDialog=false;", "console.log(response)"));
+		
+		// TODO : create the method to delte (Http.delete), make a cross on each orga to allow us deleting it
+		
+		
 		return "index";
 	}
 }
